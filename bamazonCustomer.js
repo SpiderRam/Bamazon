@@ -1,5 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require('inquirer');
+var prompt = require('prompt');
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -35,9 +36,12 @@ connection.connect(function(err) {
 });
 
 function buyWhat() {
-    console.log("What do you want to buy?  Select the corresponding ID.");
+    inquirer.prompt(["What do you want to buy?  Select the corresponding ID."]).then(answers => {
+        res[1].id
+    });
 };
 
 function buyHowMany() {
     console.log("How many would you like?");
+
 };
