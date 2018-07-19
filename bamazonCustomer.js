@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+var inquirer = require('inquirer');
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -32,3 +33,11 @@ connection.connect(function(err) {
     });
     connection.end();
 });
+
+function buyWhat() {
+    console.log("What do you want to buy?  Select the corresponding ID.");
+};
+
+function buyHowMany() {
+    console.log("How many would you like?");
+};
