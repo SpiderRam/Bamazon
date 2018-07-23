@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/SpiderRam/Bamazon/issues"
   },
-  "homepage": "https://github.com/SpiderRam/Bamazon#readme"
+  "homepage": "https://github.com/SpiderRam/Bamazon#readme",
+  "keywords": []
 }
