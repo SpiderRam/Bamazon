@@ -41,34 +41,35 @@ function chooseItems() {
         if (err) {
             throw err;
         };
-    
-        inquirer
-        .prompt([
-            {
-                name: "choice",
-                type: "rawlist",
-                message: "What is the ID of the item you wish to buy?",
-                choices: function createItemArray() {
-                    var itemArray = [];
-                    for (var i = 0; i < results.length; i++) {
-                        itemArray.push(results[i].product_name);
+        
+        inquirer.prompt(
+            [
+                {
+                    name: "choice",
+                    type: "rawlist",
+                    message: "What is the ID of the item you wish to buy?",
+                    choices: function createItemArray() {
+                        var itemArray = [];
+                        for (var i = 0; i < results.length; i++) {
+                            itemArray.push(results[i].product_name);
+                        }
+                        return itemArray;
                     }
-                    return itemArray;
+                }, 
+                {
+                    type: "input",
+                    name: "quantity",
+                    message: "How many of this item would you like to buy?"
                 }
-            },
-            {
-                type: "input",
-                name: "quantity",
-                message: "How many of this item would you like to buy?"
-            }
-        ])
-        .then(
-            checkStockQuantity(),
-        )
+            ]
+        ).then(function (val) {
+            console.log(val);
+            checkStockQuantity(val, results);
+        });
     });
 };
 
-function checkStockQuantity(answer) {
+function checkStockQuantity(answer, results) {
     
     for (var i = 0; i < results.length; i++) {
         if (results[i].product_name === answer.choice) {
@@ -95,7 +96,7 @@ function checkStockQuantity(answer) {
                 if (error) {
                     throw error;
                 } else{
-                    console.log("Your total is" + customerTotal);
+                    console.log("Your total is " + customerTotal);
                     loadProducts();
                 }
             }
