@@ -3,6 +3,7 @@ var inquirer = require('inquirer');
 require('console.table');
 
 var itemInventory;
+var currentQuantity;
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -66,9 +67,10 @@ function viewLowInventory() {
             itemInventory = results[i].stock_quantity;
             if (itemInventory <= 5) {
                 console.table(results[i]);
-                chooseAction();
+                
             };
         };
+        chooseAction();
     });
 };
 
@@ -92,12 +94,13 @@ function addInventory() {
             ])
             .then(function updateQuantity(answers) {
                 for (var i = 0; i < res.length; i++) {
-                    if (res[i].id === answers.itemId) {
-                        var currentQuantity  = res[i].stock_quantity;
-                    };
+                    if (res[i].id == answers.itemId) {
+                        currentQuantity  = parseInt(res[i].stock_quantity);
+                        console.log(currentQuantity);
+                    } 
                 };
 
-                var updatedQuantity = currentQuantity + answers.quantity;
+                var updatedQuantity = currentQuantity + parseInt(answers.quantity);
                 console.log(updatedQuantity);
                 connection.query(
                     "UPDATE products SET ? WHERE ?",
