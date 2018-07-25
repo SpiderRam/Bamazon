@@ -35,7 +35,7 @@ function chooseAction() {
             ])
             .then(function(answer) {
                 if (answer.options === "View Product Sales by Department") {
-                    viewProductSales(results);
+                    viewProductSales();
                 } else if (answer.options === "Create New Department") {
                     createNewDepartment();
                 };
@@ -43,8 +43,28 @@ function chooseAction() {
     });
 };
 
-function viewProductSales(results) {
-    console.log("learn aliases and joins");
+function viewProductSales() {
+    console.log("learn aliases, end as, and joins");
+
+    connection.query("CREATE TEMPORARY TABLE supervisor_table SELECT * FROM departments", function(err, res) {
+        if (err) {
+            throw err;
+        } else {
+            connection.query("SELECT * FROM supervisor_table", function(err, res) {
+                if (err) {
+                    throw err;
+                } else {
+                    connection.query("SELECT product_sales INTO supervisor_table FROM products"), function(err, res) {
+                        if (err) {
+                            throw err;
+                        } else {
+                            console.table(res);
+                        }
+                    };
+                }
+            });
+        }
+    });
 };
 
 function createNewDepartment() {
