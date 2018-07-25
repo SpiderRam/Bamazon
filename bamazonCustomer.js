@@ -7,6 +7,7 @@ var newStockQuantity;
 var customerTotal;
 var selectedItem;
 var cost;
+var totalSales;
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -75,6 +76,7 @@ function checkStockQuantity(answer, results) {
             stockQuantity = selectedItem.stock_quantity;
             requestedQuantity = answer.quantity;
             cost = selectedItem.price;
+            salesToDate = selectedItem.product_sales;
         };
     };
     if (stockQuantity >= parseInt(requestedQuantity)) {
@@ -96,6 +98,25 @@ function checkStockQuantity(answer, results) {
                 } else{
                     console.log("Your total is " + customerTotal);
                     console.log("\n\n\n\n-----------------------------\n\n\n\n");
+                    
+                }
+            }
+        );
+        calculateProductSales();
+        connection.query (
+            "UPDATE products SET ? WHERE ?",
+            [
+                {
+                    product_sales: totalSales
+                },
+                {
+                    id: selectedItem.id
+                }
+            ],
+            function(error) {
+                if (error) {
+                    throw error;
+                } else{
                     loadProducts();
                 }
             }
@@ -112,6 +133,10 @@ function changeStockQuantity() {
 
 function calculateTotal() {
     customerTotal = cost * requestedQuantity;
+};
+
+function calculateProductSales() {
+    totalSales = salesToDate + customerTotal;
 };
 
 

@@ -96,12 +96,11 @@ function addInventory() {
                 for (var i = 0; i < res.length; i++) {
                     if (res[i].id == answers.itemId) {
                         currentQuantity  = parseInt(res[i].stock_quantity);
-                        console.log(currentQuantity);
+                        
                     } 
                 };
-
                 var updatedQuantity = currentQuantity + parseInt(answers.quantity);
-                console.log(updatedQuantity);
+
                 connection.query(
                     "UPDATE products SET ? WHERE ?",
                     [
@@ -119,8 +118,8 @@ function addInventory() {
                             console.log("oops" + err);
                             
                         } else {
-                        console.log("Inventory levels have been updated successfully!");
-                        chooseAction();
+                            console.log("Inventory levels have been updated successfully!");
+                            chooseAction();
                         }
                     }   
                     
@@ -166,8 +165,8 @@ function addProduct() {
                 if (err) {
                     console.log('err');
                 } else {
-                console.log("Your item has been added!");
-                chooseAction();
+                    console.log("Your item has been added!");
+                    chooseAction();
                 };
             }
         );
