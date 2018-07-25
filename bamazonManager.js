@@ -20,8 +20,7 @@ connection.connect(function(err) {
     chooseAction();
 });
 
-function chooseAction() { 
-    console.log("chooseAction called")          
+function chooseAction() {           
     inquirer
         .prompt([
             {
@@ -33,13 +32,13 @@ function chooseAction() {
     
         ])
         .then(function(answer) {
-            if (answer.choice === "View Products for Sale") {
+            if (answer.options === "View Products for Sale") {
                 viewProducts();
-            } else if (answer.choice === "View Low Inventory") {
+            } else if (answer.options === "View Low Inventory") {
                 viewLowInventory();
-            } else if (answer.choice === "Add to Inventory") {
+            } else if (answer.options === "Add to Inventory") {
                 addInventory();
-            } else if (answer.choice === "Add New Product") {
+            } else if (answer.options === "Add New Product") {
                 addProduct();
             };
         });
@@ -67,16 +66,18 @@ function viewLowInventory() {
             itemInventory = results[i].stock_quantity;
             if (itemInventory <= 5) {
                 console.table(results[i]);
+                chooseAction();
             };
         };
     });
 };
 
 function addInventory() {
-    connection.query("SELECT * FROM auctions", function(err, res) {
+    connection.query("SELECT * FROM products", function(err, res) {
         if (err) {
           throw err;
         } else {
+            console.table(res);
             inquirer.prompt([
                 {
                     type:"input",
@@ -90,11 +91,19 @@ function addInventory() {
                 },
             ])
             .then(function updateQuantity(answers) {
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i].id === answers.itemId) {
+                        var currentQuantity  = res[i].stock_quantity;
+                    };
+                };
+
+                var updatedQuantity = currentQuantity + answers.quantity;
+                console.log(updatedQuantity);
                 connection.query(
                     "UPDATE products SET ? WHERE ?",
                     [
                         {
-                            stock_quantity: answers.quantity
+                            stock_quantity:  updatedQuantity
                         },
                         {
                             id: answers.itemId
@@ -104,7 +113,7 @@ function addInventory() {
                     function (err) {
                         
                         if (err) {
-                            console.log("oops");
+                            console.log("oops" + err);
                             
                         } else {
                         console.log("Inventory levels have been updated successfully!");
