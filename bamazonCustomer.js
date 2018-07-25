@@ -21,7 +21,6 @@ connection.connect(function(err) {
       console.log(err.message);
       return;
     }; 
-    console.log("connected as id " + connection.threadId);
     loadProducts();
 });
 
@@ -36,7 +35,6 @@ function loadProducts() {
 };
     
 function chooseItems() {
-    console.log("chooseItems called");
     connection.query("SELECT * FROM products", function(err, results) {
         if (err) {
             throw err;
@@ -97,6 +95,7 @@ function checkStockQuantity(answer, results) {
                     throw error;
                 } else{
                     console.log("Your total is " + customerTotal);
+                    console.log("\n\n\n\n-----------------------------\n\n\n\n");
                     loadProducts();
                 }
             }
