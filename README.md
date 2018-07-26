@@ -17,3 +17,10 @@
 
 ## bamazonCustomer.js:
 
+<<<<<<< HEAD
+=======
+![Screenshot 1]
+(screenshots/bamazonCustomer-1.png)
+![Screenshot 2]
+(screenshots/bamazonCustomer-2.png)
+>>>>>>> c115962524193f3f9f5229fbe08426c977fde4c9
