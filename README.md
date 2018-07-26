@@ -17,7 +17,3 @@
 
 ## bamazonCustomer.js:
 
-![Screenshot 1]
-(https://github.com/SpiderRam/Bamazon/blob/master/screenshots/bamazonCustomer-1.png)
-![Screenshot 2]
-(https://github.com/SpiderRam/Bamazon/blob/master/screenshots/bamazonCustomer-2.png)
