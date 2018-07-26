@@ -96,8 +96,9 @@ function checkStockQuantity(answer, results) {
                 if (error) {
                     throw error;
                 } else{
+                    console.log("\n\n");
                     console.log("Your total is " + customerTotal);
-                    console.log("\n\n\n\n-----------------------------\n\n\n\n");
+                    console.log("-----------------------------\n\n\n\n");
                     
                 }
             }
