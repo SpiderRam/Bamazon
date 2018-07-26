@@ -47,7 +47,7 @@ function chooseAction() {
 
 
 function viewProducts() {
-    console.log("viewProducts called");
+    
     connection.query("SELECT * FROM products", function(err, results) {
         if (err) {
             throw err;
@@ -115,7 +115,7 @@ function addInventory() {
                     function (err) {
                         
                         if (err) {
-                            console.log("oops" + err);
+                            console.log("oops " + err);
                             
                         } else {
                             console.log("Inventory levels have been updated successfully!");
@@ -163,7 +163,7 @@ function addProduct() {
             },
             function (err) {
                 if (err) {
-                    console.log('err');
+                    console.log(err);
                 } else {
                     console.log("Your item has been added!");
                     chooseAction();

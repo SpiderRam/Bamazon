@@ -62,7 +62,7 @@ function chooseItems() {
                 }
             ]
         ).then(function (val) {
-            console.log(val);
+            
             checkStockQuantity(val, results);
         });
     });
