@@ -15,5 +15,4 @@
 #### --> This names the new table and sets its ordering of contents. <--
 - AS prodDept GROUP BY department_id"
 
-## bamazonCustomer.js:
 
