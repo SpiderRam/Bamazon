@@ -18,6 +18,6 @@
 ## bamazonCustomer.js:
 
 ![Screenshot 1]
-(https://drive.google.com/open?id=1Avhqc6hpmDfoN0p5GkuD7xeaUyP0AdUX)
+(https://github.com/SpiderRam/Bamazon/blob/master/screenshots/bamazonCustomer-1.png)
 ![Screenshot 2]
-(https://drive.google.com/open?id=1mGx9ibVL13KFHpoAeiu9FUZ4FBg6m1gp)
+(https://github.com/SpiderRam/Bamazon/blob/master/screenshots/bamazonCustomer-2.png)
