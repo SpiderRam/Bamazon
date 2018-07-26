@@ -139,7 +139,7 @@ function addProduct() {
         {
             type:"input",
             name:"departmentName",
-            message:"What is the name of the department in which this item belongs?"
+            message:"What is the name of the department in which this item will go?"
         },
         {
             type:"input",
