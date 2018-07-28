@@ -2,7 +2,7 @@
 
 * The most difficult part of this was the `viewProductSales()` function, bamazonSupervisor46-54.  It is difficult to read in the .js format, it is better understood written thus:
 
-#### --> This section is specifying the content, before the table has technically been created. <--
+#### --> This section is specifying the content, before the table has technically been created, and performing the math to create and populate a new column called total_profit. <--
 - SELECT prodDept.department_id, prodDept.department_name, prodDept.over_head_costs,
 - SUM (prodDept.product_sales) AS product_sales,
 - (SUM (prodDept.product_sales) - prodDept.over_head_costs) AS total_profit 
