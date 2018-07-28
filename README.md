@@ -9,7 +9,8 @@
 #### --> Begin section that actually creates the new, temporary table <--
 - FROM (SELECT departments.department_id, departments.department_name, departments.over_head_costs,
 - IFNULL (products.product_sales, 0)
-- AS product_sales FROM products
+- AS product_sales 
+- FROM products
 - RIGHT JOIN departments
 - ON products.department_name = departments.department_name)
 #### --> This names the new table and sets its ordering of contents. <--
